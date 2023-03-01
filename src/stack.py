@@ -1,5 +1,6 @@
 import aws_cdk as cdk
 
+from aws_cdk import aws_s3 as s3
 from constructs import Construct
 from typing_extensions import TypedDict
 from typing_extensions import Unpack
@@ -24,6 +25,14 @@ class DemoApi(cdk.Stack):
 
         self.stage = kwargs.get("stage")
         self.config: Config = getattr(EnvironmentConfig(), self.stage)
+
+        s3.Bucket(
+            scope=self,
+            id="DemoApiSupletivoDataHackersBucket",
+            bucket_name=self.config.bucket_name,
+            removal_policy=cdk.RemovalPolicy.DESTROY,  # somente por causa da demo
+            auto_delete_objects=True,  # somente por causa da demo
+        )
 
         # Add tags to everything in this stack
         cdk.Tags.of(self).add(key="owner", value="backend")

@@ -25,4 +25,24 @@ DemoApi(
     stage="development",
 )
 
+DemoApi(
+    scope=app,
+    id="DemoApi-Staging",
+    env=cdk.Environment(
+        account=AWSAccount.STAGING.value,
+        region="us-east-1",
+    ),
+    stage="staging",
+)
+
+DemoApi(
+    scope=app,
+    id="DemoApi-Production",
+    env=cdk.Environment(
+        account=AWSAccount.PRODUCTION.value,
+        region="us-east-1",
+    ),
+    stage="production",
+)
+
 app.synth()
