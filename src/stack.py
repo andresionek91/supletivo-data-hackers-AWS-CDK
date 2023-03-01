@@ -1,13 +1,13 @@
 import aws_cdk as cdk
 
-from aws_cdk import aws_lambda as _lambda
+from aws_cdk import aws_apigateway as apigw
+from aws_cdk import aws_lambda as lambda_
 from aws_cdk import aws_s3 as s3
 from constructs import Construct
-from typing_extensions import TypedDict
-from typing_extensions import Unpack
-
 from src.config import Config
 from src.config import EnvironmentConfig
+from typing_extensions import TypedDict
+from typing_extensions import Unpack
 
 
 class Params(TypedDict):
@@ -29,33 +29,47 @@ class DemoApi(cdk.Stack):
 
         bucket = s3.Bucket(
             scope=self,
-            id="DemoApiSupletivoDataHackersBucket",
-            bucket_name=self.config.bucket_name,
-            removal_policy=cdk.RemovalPolicy.DESTROY,  # somente por causa da demo
-            auto_delete_objects=True,  # somente por causa da demo
+            id="DemoApiSupletivoDataHackers",
+            bucket_name=f"spdh-{self.stage}-demo-api",
+            removal_policy=cdk.RemovalPolicy.DESTROY,  # Delete bucket when stack is deleted
+            auto_delete_objects=True,  # Delete all objects in the bucket when the bucket is deleted
         )
 
-        _lambda.Function(
+        handler = lambda_.DockerImageFunction(
             scope=self,
-            id="DemoApiSupletivoDataHackersLambda",
-            runtime=_lambda.Runtime.PYTHON_3_9,
-            handler="lambda_function.lambda_handler",
-            code=_lambda.Code.from_asset(self.config.code),
-            timeout=cdk.Duration.seconds(self.config.timeout_seconds),
-            memory_size=128,
+            id="DemoApiSupletivoDataHackersHandler",
+            description="Demo API with Lambda function",
+            code=lambda_.DockerImageCode.from_image_asset(
+                directory=self.config.code,
+            ),
+            timeout=cdk.Duration.seconds(amount=self.config.timeout_seconds),
+            memory_size=self.config.memory_size_mb,
+            ephemeral_storage_size=cdk.Size.mebibytes(amount=self.config.ephemeral_storage_size_mb),
+            log_retention=self.config.log_retention,
+            dead_letter_queue_enabled=self.config.dead_letter_queue_enabled,
             environment={
+                "LOG_LEVEL": self.config.log_level,
                 "BUCKET_NAME": bucket.bucket_name,
+                **self.config.extra_environment,
             },
         )
 
-        for idx in range(3):
-            s3.Bucket(
-                scope=self,
-                id=f"ForLoopBucket{idx}",
-                bucket_name=f"for-loop-bucket-data-hackers-{idx}",
-                removal_policy=cdk.RemovalPolicy.DESTROY,  # somente por causa da demo
-                auto_delete_objects=True,  # somente por causa da demo
-            )
+        bucket.grant_read_write(handler)
+
+        api = apigw.RestApi(
+            scope=self,
+            id="DemoApiSupletivoDataHackersApi",
+            rest_api_name="DemoApiSupletivoDataHackers",
+            description="Demo API with Lambda function",
+        )
+
+        demo_api_integration = apigw.LambdaIntegration(handler=handler)
+
+        files_resource = api.root.add_resource("files")
+        files_resource.add_method("GET", demo_api_integration, api_key_required=False)
+        file_resource = api.root.add_resource("file")
+        file_resource.add_method("GET", demo_api_integration, api_key_required=False)
+        file_resource.add_method("PUT", demo_api_integration, api_key_required=False)
 
         # Add tags to everything in this stack
         cdk.Tags.of(self).add(key="owner", value="backend")
