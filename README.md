@@ -66,7 +66,7 @@ source .venv/bin/activate
 Após modificar o seu stack, você pode rodar o seguinte comando para ver o template CloudFormation gerado:
 
 ```bash
-make synth
+cdk synth
 ```
 
 E para fazer o deploy da stack:
