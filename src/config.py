@@ -6,6 +6,9 @@ class Config:
     """Configuration for the API and Lambda function."""
 
     bucket_name: str
+    code: str = "src/demo_function"
+    timeout_seconds: int = 10
+    memory_size: int = 128
 
 
 class EnvironmentConfig:

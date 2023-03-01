@@ -1,5 +1,6 @@
 import aws_cdk as cdk
 
+from aws_cdk import aws_lambda as _lambda
 from aws_cdk import aws_s3 as s3
 from constructs import Construct
 from typing_extensions import TypedDict
@@ -26,13 +27,35 @@ class DemoApi(cdk.Stack):
         self.stage = kwargs.get("stage")
         self.config: Config = getattr(EnvironmentConfig(), self.stage)
 
-        s3.Bucket(
+        bucket = s3.Bucket(
             scope=self,
             id="DemoApiSupletivoDataHackersBucket",
             bucket_name=self.config.bucket_name,
             removal_policy=cdk.RemovalPolicy.DESTROY,  # somente por causa da demo
             auto_delete_objects=True,  # somente por causa da demo
         )
+
+        _lambda.Function(
+            scope=self,
+            id="DemoApiSupletivoDataHackersLambda",
+            runtime=_lambda.Runtime.PYTHON_3_9,
+            handler="lambda_function.lambda_handler",
+            code=_lambda.Code.from_asset(self.config.code),
+            timeout=cdk.Duration.seconds(self.config.timeout_seconds),
+            memory_size=128,
+            environment={
+                "BUCKET_NAME": bucket.bucket_name,
+            },
+        )
+
+        for idx in range(3):
+            s3.Bucket(
+                scope=self,
+                id=f"ForLoopBucket{idx}",
+                bucket_name=f"for-loop-bucket-data-hackers-{idx}",
+                removal_policy=cdk.RemovalPolicy.DESTROY,  # somente por causa da demo
+                auto_delete_objects=True,  # somente por causa da demo
+            )
 
         # Add tags to everything in this stack
         cdk.Tags.of(self).add(key="owner", value="backend")
