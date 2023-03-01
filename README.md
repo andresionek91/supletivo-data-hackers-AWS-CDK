@@ -8,6 +8,22 @@ O objetivo é criar uma aplicação que utiliza o AWS CDK para criar uma stack d
 
 **[Confira aqui o conteúdo gravado]()**
 
+## Objetivos da demo
+
+1. Criar uma stack de infraestrutura na AWS utilizando o AWS CDK
+    1. Mostrar como o CDK gera o template CloudFormation
+    1. Mostrar como o CDK faz o deploy da stack
+    1. Mostrar como trabalhar com diferentes ambientes (dev, prod, etc)
+1. Criar um bucket S3
+1. Criar uma função Lambda que:
+    1. Recebe um input e escreve um arquivo no bucket S3
+    1. Lê o arquivo do bucket S3 e retorna o conteúdo
+1. Criar um API Gateway
+    1. Criar um endpoint para escrever um arquivo no bucket S3
+    1. Criar um endpoint para ler um arquivo do bucket S3
+1. Criar um teste para a função Lambda
+1. Criar um teste para a infraestrutura
+
 ## Requisitos
 
 1. Para instalar esse projeto você precisa ter o Python Poetry instalado. Para instalar o Poetry, siga as instruções do [site oficial](https://python-poetry.org/docs/#installing-with-the-official-installer)
