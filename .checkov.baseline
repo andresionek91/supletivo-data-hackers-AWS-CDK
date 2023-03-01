@@ -1,3 +1,196 @@
 {
-    "failed_checks": []
+    "failed_checks": [
+        {
+            "file": "/DemoApi-Development.template.json",
+            "findings": [
+                {
+                    "resource": "AWS::Lambda::Function.CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+                    "check_ids": [
+                        "CKV_AWS_115",
+                        "CKV_AWS_117"
+                    ]
+                },
+                {
+                    "resource": "AWS::Lambda::Function.DemoApiSupletivoDataHackersLambda250AAA9B",
+                    "check_ids": [
+                        "CKV_AWS_115",
+                        "CKV_AWS_117",
+                        "CKV_AWS_173"
+                    ]
+                },
+                {
+                    "resource": "AWS::S3::Bucket.DemoApiSupletivoDataHackersBucket528F78BB",
+                    "check_ids": [
+                        "CKV_AWS_18",
+                        "CKV_AWS_21",
+                        "CKV_AWS_53",
+                        "CKV_AWS_54",
+                        "CKV_AWS_55",
+                        "CKV_AWS_56"
+                    ]
+                },
+                {
+                    "resource": "AWS::S3::Bucket.ForLoopBucket0D38F4321",
+                    "check_ids": [
+                        "CKV_AWS_18",
+                        "CKV_AWS_21",
+                        "CKV_AWS_53",
+                        "CKV_AWS_54",
+                        "CKV_AWS_55",
+                        "CKV_AWS_56"
+                    ]
+                },
+                {
+                    "resource": "AWS::S3::Bucket.ForLoopBucket13E6489F2",
+                    "check_ids": [
+                        "CKV_AWS_18",
+                        "CKV_AWS_21",
+                        "CKV_AWS_53",
+                        "CKV_AWS_54",
+                        "CKV_AWS_55",
+                        "CKV_AWS_56"
+                    ]
+                },
+                {
+                    "resource": "AWS::S3::Bucket.ForLoopBucket22451160C",
+                    "check_ids": [
+                        "CKV_AWS_18",
+                        "CKV_AWS_21",
+                        "CKV_AWS_53",
+                        "CKV_AWS_54",
+                        "CKV_AWS_55",
+                        "CKV_AWS_56"
+                    ]
+                }
+            ]
+        },
+        {
+            "file": "/DemoApi-Production.template.json",
+            "findings": [
+                {
+                    "resource": "AWS::Lambda::Function.CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+                    "check_ids": [
+                        "CKV_AWS_115",
+                        "CKV_AWS_117"
+                    ]
+                },
+                {
+                    "resource": "AWS::Lambda::Function.DemoApiSupletivoDataHackersLambda250AAA9B",
+                    "check_ids": [
+                        "CKV_AWS_115",
+                        "CKV_AWS_117",
+                        "CKV_AWS_173"
+                    ]
+                },
+                {
+                    "resource": "AWS::S3::Bucket.DemoApiSupletivoDataHackersBucket528F78BB",
+                    "check_ids": [
+                        "CKV_AWS_18",
+                        "CKV_AWS_21",
+                        "CKV_AWS_53",
+                        "CKV_AWS_54",
+                        "CKV_AWS_55",
+                        "CKV_AWS_56"
+                    ]
+                },
+                {
+                    "resource": "AWS::S3::Bucket.ForLoopBucket0D38F4321",
+                    "check_ids": [
+                        "CKV_AWS_18",
+                        "CKV_AWS_21",
+                        "CKV_AWS_53",
+                        "CKV_AWS_54",
+                        "CKV_AWS_55",
+                        "CKV_AWS_56"
+                    ]
+                },
+                {
+                    "resource": "AWS::S3::Bucket.ForLoopBucket13E6489F2",
+                    "check_ids": [
+                        "CKV_AWS_18",
+                        "CKV_AWS_21",
+                        "CKV_AWS_53",
+                        "CKV_AWS_54",
+                        "CKV_AWS_55",
+                        "CKV_AWS_56"
+                    ]
+                },
+                {
+                    "resource": "AWS::S3::Bucket.ForLoopBucket22451160C",
+                    "check_ids": [
+                        "CKV_AWS_18",
+                        "CKV_AWS_21",
+                        "CKV_AWS_53",
+                        "CKV_AWS_54",
+                        "CKV_AWS_55",
+                        "CKV_AWS_56"
+                    ]
+                }
+            ]
+        },
+        {
+            "file": "/DemoApi-Staging.template.json",
+            "findings": [
+                {
+                    "resource": "AWS::Lambda::Function.CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+                    "check_ids": [
+                        "CKV_AWS_115",
+                        "CKV_AWS_117"
+                    ]
+                },
+                {
+                    "resource": "AWS::Lambda::Function.DemoApiSupletivoDataHackersLambda250AAA9B",
+                    "check_ids": [
+                        "CKV_AWS_115",
+                        "CKV_AWS_117",
+                        "CKV_AWS_173"
+                    ]
+                },
+                {
+                    "resource": "AWS::S3::Bucket.DemoApiSupletivoDataHackersBucket528F78BB",
+                    "check_ids": [
+                        "CKV_AWS_18",
+                        "CKV_AWS_21",
+                        "CKV_AWS_53",
+                        "CKV_AWS_54",
+                        "CKV_AWS_55",
+                        "CKV_AWS_56"
+                    ]
+                },
+                {
+                    "resource": "AWS::S3::Bucket.ForLoopBucket0D38F4321",
+                    "check_ids": [
+                        "CKV_AWS_18",
+                        "CKV_AWS_21",
+                        "CKV_AWS_53",
+                        "CKV_AWS_54",
+                        "CKV_AWS_55",
+                        "CKV_AWS_56"
+                    ]
+                },
+                {
+                    "resource": "AWS::S3::Bucket.ForLoopBucket13E6489F2",
+                    "check_ids": [
+                        "CKV_AWS_18",
+                        "CKV_AWS_21",
+                        "CKV_AWS_53",
+                        "CKV_AWS_54",
+                        "CKV_AWS_55",
+                        "CKV_AWS_56"
+                    ]
+                },
+                {
+                    "resource": "AWS::S3::Bucket.ForLoopBucket22451160C",
+                    "check_ids": [
+                        "CKV_AWS_18",
+                        "CKV_AWS_21",
+                        "CKV_AWS_53",
+                        "CKV_AWS_54",
+                        "CKV_AWS_55",
+                        "CKV_AWS_56"
+                    ]
+                }
+            ]
+        }
+    ]
 }

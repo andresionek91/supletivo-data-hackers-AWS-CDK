@@ -4,9 +4,9 @@ Material criado para a aula de AWS CDK do Supletivo Data Hackers.
 
 O objetivo é criar uma aplicação que utiliza o AWS CDK para criar uma stack de infraestrutura na AWS. Essa stack será composta por um bucket S3, uma função Lambda e um API Gateway.
 
-#TODO: insert link to video
+**[Confira aqui o conteúdo gravado](https://www.youtube.com/watch?v=k8HHT2tX0k8)**
 
-**[Confira aqui o conteúdo gravado]()**
+> [Branch da demo ao vivo](https://github.com/andresionek91/supletivo-data-hackers-AWS-CDK/tree/demo-ao-vivo)
 
 ## Objetivos da demo
 
@@ -18,9 +18,11 @@ O objetivo é criar uma aplicação que utiliza o AWS CDK para criar uma stack d
 1. Criar uma função Lambda que:
     1. Recebe um input e escreve um arquivo no bucket S3
     1. Lê o arquivo do bucket S3 e retorna o conteúdo
+    1. Lista os arquivos do bucket S3
 1. Criar um API Gateway
     1. Criar um endpoint para escrever um arquivo no bucket S3
     1. Criar um endpoint para ler um arquivo do bucket S3
+    1. Criar um endpoint para listar os arquivos do bucket S3
 1. Criar um teste para a função Lambda
 1. Criar um teste para a infraestrutura
 
@@ -72,5 +74,14 @@ cdk synth
 E para fazer o deploy da stack:
 
 ```bash
-cdk deploy --profile my_profile
+cdk deploy <Nome-da-Stack>--profile my_profile
 ```
+
+## Links úteis
+
+* Poetry: https://python-poetry.org/
+* AWS CDK: https://docs.aws.amazon.com/cdk/latest/guide/home.html
+* CDK Docs: https://docs.aws.amazon.com/cdk/api/v2/python/index.html
+* Terraform: https://www.terraform.io/
+* Pre-commit: https://pre-commit.com/
+* Checkov: https://www.checkov.io/

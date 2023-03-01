@@ -5,7 +5,10 @@ from dataclasses import dataclass
 class Config:
     """Configuration for the API and Lambda function."""
 
-    foo: str = "bar"
+    bucket_name: str
+    code: str = "src/demo_function"
+    timeout_seconds: int = 10
+    memory_size: int = 128
 
 
 class EnvironmentConfig:
@@ -15,6 +18,6 @@ class EnvironmentConfig:
     Production is disabled for now because we don't need to deploy docs to production
     """
 
-    development: Config = Config()
-    staging: Config = Config()
-    production: Config = Config()
+    development: Config = Config(bucket_name="demo-api-development-supletivo-data-hackers-dev")
+    staging: Config = Config(bucket_name="demo-api-staging-supletivo-data-hackers-dev")
+    production: Config = Config(bucket_name="demo-api-production-supletivo-data-hackers-dev")
