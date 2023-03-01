@@ -1,0 +1,18 @@
+---
+directory:
+  - cdk.out
+download-external-modules: false
+evaluate-variables: true
+external-modules-download-path: .external_modules
+compact: true
+framework:
+  - cloudformation
+quiet: true
+skip-check:
+  - CKV_AWS_158  # Ensure that CloudWatch Log Group is encrypted by KMS
+  - CKV_AWS_116  # Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)
+  - CKV_AWS_149  # Ensure that Secrets Manager secret is encrypted using KMS CMK
+soft-fail-on:
+  - CKV_AWS_109  # Ensure IAM policies does not allow permissions management without constraints
+  - CKV_AWS_111  # Ensure IAM policies does not allow write access without constraints
+  - CKV_AWS_157  # Ensure that RDS instances have Multi-AZ enabled
