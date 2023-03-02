@@ -4,7 +4,7 @@ import pytest
 @pytest.mark.parametrize(
     "type,count",
     [
-        ("AWS::S3::Bucket", 4),
+        ("AWS::S3::Bucket", 1),
     ],
 )
 def test_resource_count(type, count, template_fixture):
@@ -15,6 +15,6 @@ def test_bucket(template_fixture):
     template_fixture.has_resource_properties(
         type="AWS::S3::Bucket",
         props={
-            "BucketName": "demo-api-development-supletivo-data-hackers-dev",
+            "BucketName": "spdh-development-demo-api",
         },
     )

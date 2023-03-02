@@ -1,0 +1,14 @@
+# Ignore everything
+*
+
+# Allow files and directories
+!/poetry.lock
+!/pyproject.toml
+!/git-config.sh
+!/demo_function
+
+# Ignore unnecessary files inside allowed directories
+# This should go after the allowed directories
+**/.DS_Store
+**/.idea
+**/__pycache__
